@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Products - RedStore</title>
+    <link rel="icon" href="//bizweb.dktcdn.net/100/476/122/themes/893407/assets/favicon.png?1688462486084">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #checkout-form {
+            display: none;
+            position: fixed;
+            width: 60%;
+            height: 55%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -65%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ff523b;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #checkout-form.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="continer">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/index.html"><img src="/images/logo.png" alt=""></a>
+            </div>
+            <nav>
+                <ul id="menuItems">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/products.html">Product</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="/admin.html">Account</a></li>
+                </ul>
+            </nav>
+            <a href="/cart.html"><img src="/images/cart.png" width="30px" height="30px"></a>
+            <img src="/images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <!-- cart item details-->
+
+    <div class="small-container cart-page">
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th style="text-align: right;">Subtotal</th>
+            </tr>
+            <tbody id="cart_product">
+                <!-- <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="/images/buy-1.jpg">
+                            <div>
+                                <p>Red Printed Tshirt</p>
+                                <small>Price: $50.00</small>
+                                <br>
+                                <a href="">Edit</a>
+                                <div>
+                                    <a href="">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </section>
+                    </td>
+                    <td><input type="number" value="1"></td>
+                    <td>$50.00</td>
+                </tr> -->
+            </tbody>
+
+        </table>
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Total</td>
+                    <td id="totalPrice"></td>
+                </tr>
+                <tr>
+                    <td><a class="btn btn-order" onclick="showCheckoutForm()">Ordert</a></td>
+                </tr>
+            </table>
+        </div>
+        <form id="checkout-form">
+            <table>
+                <tr>
+                    <th>Information</th>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align: left;">Name : <input class="btnIp" type="text" id="name" name="name"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align: left;">Phone : <input class="btnIp" type="text" id="phone" name="phone">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align: left;">Address : <input class="btnIp" type="text" id="Address"
+                                name="Address"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align: left;">Note : <input class="btnIp" type="text" id="note" name="note"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a onclick="pay()" class="btn btn-order" style="margin: 15px -10px 0;">Agree</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!-- footer -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android anh ios mobile phone.</p>
+                    <div class="app-logo">
+                        <img src="/images/play-store.png">
+                        <img src="/images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="/images/logo-white.png">
+                    <p>Our Purpose Is To Sustainably Make the Pleasure and
+                        Benefits of Sports Accessible to the Many.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2023 - Easy Tutorial</p>
+        </div>
+    </div>
+    <!-- js for toggle menu -->
+    <script>
+        var menuItems = document.getElementById("menuItems");
+
+        menuItems.style.maxHeight = "0px";
+
+        function menutoggle() {
+            if (menuItems.style.maxHeight == "0px") {
+                menuItems.style.maxHeight = "200px";
+            } else {
+                menuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+    <script src="/data.js"></script>
+    <script>
+        function renderDataCart() {
+            let bodyProduct = document.getElementById("cart_product");
+            let cartsHtml = ``;
+            let totalPrice = 0;
+            carts.forEach((cart) => {
+                totalPrice += +cart.total;
+                console.log(typeof cart.total);
+                console.log(totalPrice);
+                cartsHtml += `
+                        <tr>
+                            <td>
+                                <div class="cart-info">
+                                    <img src="${cart.src}">
+                                    <div>
+                                        <p>${cart.name}</p>
+                                        <small>Price: $${cart.price}</small>
+                                        <br>
+                                        <a onclick="deleteProduct(${cart.id})">Remove</a>
+                                    </div>
+                                </div>
+                            </td>
+                                <td>${cart.size}</td>
+                                <td><input type="number" value="${cart.quantity}" id="numbers" min="1" max="9" onchange='updatePrice(${cart.id}, this.value)'></input</td>
+                                <td id="total-${cart.id}">$${cart.total}</td>
+                        </tr>
+                            
+                    `
+            })
+
+            bodyProduct.innerHTML = cartsHtml;
+            document.getElementById("totalPrice").innerText = `$` + totalPrice;
+        } 
+        renderDataCart()
+
+        function deleteProduct(id) {
+            console.log(id);
+            let check = confirm("Bạn có chắc chắn muốn xóa");
+                if (check) {
+                    for (i = 0; i < carts.length; i++) {
+                        if (carts[i].id == id) {
+                        carts.splice(i, 1)
+                        }
+                    }
+                }
+                console.log(carts);
+                renderDataCart()
+                localStorage.setItem("carts", JSON.stringify(carts))
+        }
+
+        function showCheckoutForm(){
+            let checkoutForm = document.getElementById("checkout-form");
+            checkoutForm.style.display = 'block';
+            document.body.appendChild(checkoutForm);
+        }
+
+        function updatePrice(id, quantity) {
+            // let quantity = parseInt(document.getElementById("numbers").value);
+            let total = 0;
+            let totalPrice = 0;
+            // console.log(quantity);
+            console.log(id);
+            for (i = 0; i < carts.length; i++){
+                if (carts[i].id == id){
+                    total = (carts[i].price * quantity);
+                    carts[i].quantity = quantity;
+                    carts[i].total = total;
+                }
+                totalPrice += carts[i].total;
+            }
+            document.getElementById("totalPrice").innerText = `$` + totalPrice;
+            localStorage.setItem("carts", JSON.stringify(carts))
+            document.getElementById(`total-${id}`).innerHTML = `$` + total;      
+        }
+
+        function pay(){
+            localStorage.removeItem("carts")
+            location.reload();
+            alert("Bạn đã đặt hàng thành công")
+        }
+    </script>
+</body>
+
+</html>
