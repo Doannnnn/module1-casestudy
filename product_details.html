@@ -256,20 +256,13 @@
             }
             document.getElementById("product_details").innerHTML = product_detailsHtml;
         });
+
         function addToCart(product) {
             console.log(product);
-            // Lấy ra size mà khách hàng chọn
             let size = document.getElementById("size").value;
-            // Lấy ra số lượng mà khách hàng chọn
             let quantity = document.getElementById("numbers").value
-
-
-            // tính tổng tiền khi khách hàng chọn số lượng
             let total = product.price * quantity;
-
-            // Kiểm tra nếu như khách hàng order trùng sản phẩm, và size
             let checkEqual = false;
-            //Thì tăng số lượng lên
             for (i = 0; i < carts.length; i++) {
                 if (product.name == carts[i].name && size == carts[i].size) {
                     carts[i].quantity = +carts[i].quantity + +quantity;
@@ -278,16 +271,12 @@
                 } parseInt
             }
             if (!checkEqual) {
-                //Ngược lại thì thêm mới sản phẩm vào giỏ hàng
-                // Xử lý id tự tăng
                 let id;
-                if (carts.length == 0) { // Nếu như carts đang rỗng, tức là không có sản phẩm nào trong giỏ hàng, thì id sẽ là 1
+                if (carts.length == 0) {
                     id = 1
-                } else { //Ngược lại, nếu trong carts đã có sản phẩm, thì id sẽ lấy id cuối cùng trong giỏ hàng và cộng lên 1
+                } else {
                     id = carts[carts.length - 1].id + 1;
                 }
-
-                // Tạo ra 1 sản phẩm trong giỏ hàng
                 let cart = {
                     id: id,
                     idProduct: product.id,
@@ -298,13 +287,8 @@
                     size: size,
                     total: total,
                 }
-
-                // Thêm sản phẩm đó vào trong list carts
                 carts.push(cart)
             }
-
-
-            // Set list carts vào localStorage để lưu trữ
             localStorage.setItem("carts", JSON.stringify(carts))
             console.log(carts);
             alert("Thêm vào giỏ hàng thành công")
@@ -312,4 +296,5 @@
         }
     </script>
 </body>
+
 </html>

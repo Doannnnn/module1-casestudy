@@ -252,11 +252,8 @@
         }
 
         function updatePrice(id, quantity) {
-            // let quantity = parseInt(document.getElementById("numbers").value);
             let total = 0;
             let totalPrice = 0;
-            // console.log(quantity);
-            console.log(id);
             for (i = 0; i < carts.length; i++){
                 if (carts[i].id == id){
                     total = (carts[i].price * quantity);

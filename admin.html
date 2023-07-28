@@ -160,22 +160,19 @@
             document.getElementById("bodyProduct").innerHTML = productsHtml;
         }
         renderData()
-
         function deleteListproduct(id) {
             console.log(id);
             let check = confirm("Bạn có chắc chắn muốn xóa");
-            if(check) {
+            if (check) {
                 for (i = 0; i < products.length; i++) {
-                if (products[i].id == id) {
-                    products.splice(i, 1)
+                    if (products[i].id == id) {
+                        products.splice(i, 1)
+                    }
                 }
-
-            }
                 console.log(products);
                 renderData()
                 localStorage.setItem("products", JSON.stringify(products))
             }
-            
         }
 
         function editListproduct(id) {
@@ -188,7 +185,6 @@
                 }
             }
         }
-
         function updateProduct() {
             let id = document.getElementById("id").value;
             let img = document.getElementById("img").value;
@@ -202,11 +198,9 @@
                     products[i].price = price;
                 }
             }
-            
             localStorage.setItem("products", JSON.stringify(products))
             alert("Update thành công");
             location.reload();
-
         }
     </script>
 </body>

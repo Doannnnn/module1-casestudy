@@ -73,19 +73,14 @@ let newProducts = [
     },
 
 ]
-let products= JSON.parse(localStorage.getItem("products")) || newProducts
+let products = JSON.parse(localStorage.getItem("products")) || newProducts
 let carts = JSON.parse(localStorage.getItem("carts")) || []
 
 function addProduct() {
     let img = document.getElementById("img").value;
     let name = document.getElementById("name").value;
     let price = document.getElementById("price").value;
-    let id;
-    if (products.length == 0) { 
-        id = 1
-    } else {
-        id = products[products.length - 1].id + 1;
-    }
+    let id = products.length == 0 ? 1 : products[products.length - 1].id + 1;;
     let addproduct = {
         id: id,
         src: img,
@@ -97,7 +92,6 @@ function addProduct() {
     localStorage.setItem("products", JSON.stringify(products))
     alert("Sản phẩm được thêm vào")
     location.reload();
-
 }
 
 
